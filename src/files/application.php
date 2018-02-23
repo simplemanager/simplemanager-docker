@@ -8,13 +8,13 @@ return [
             'database' => 'sma_admin',
             'hostname' => 'mysql',
             'username' => 'root',
-            'password' => 'password'
+            'password' => ''
         ],
         'common' => [
             'database' => 'sma_common',
-            'hostname' => 'localhost',
+            'hostname' => 'mysql',
             'username' => 'root',
-            'password' => 'password'
+            'password' => ''
         ]
     ],
     'redis' => [

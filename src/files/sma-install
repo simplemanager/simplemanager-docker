@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -f /opt/simplemanager/etc/acl.yml ] ;then
+  echo '[i] SimpleManager is already installed.'
+  exit 0
+fi
+
+email=$ADMIN_EMAIL
+regex="^(([-a-zA-Z0-9\!#\$%\&\'*+/=?^_\`{\|}~]+|(\"([][,:;<>\&@a-zA-Z0-9\!#\$%\&\'*+/=?^_\`{\|}~-]|(\\\\[\\ \"]))+\"))\.)*([-a-zA-Z0-9\!#\$%\&\'*+/=?^_\`{\|}~]+|(\"([][,:;<>\&@a-zA-Z0-9\!#\$%\&\'*+/=?^_\`{\|}~-]|(\\\\[\\ \"]))+\"))@\w((-|\w)*\w)*\.(\w((-|\w)*\w)*\.)*\w{2,4}$"
+
+echo '[i] SimpleManager is not installed. Launching the installation...'
+
+while [[ ! $email =~ $regex ]] ;do
+  if [[ $email != '' ]] ;then
+    echo '[e] ['$email'] seems not to be a valid email, please retry...'
+  fi
+  echo -ne '[q] Type a SimpleManager admin (real) email address: '
+  read email
+done
+
+echo "[i] OK, let's go..."
+sma install -e $email --dbpass $MYSQL_ROOT_PASSWORD
+unset MYSQL_ROOT_PASSWORD
+
