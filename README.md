@@ -6,19 +6,30 @@ The [SimpleManager webapp](https://www.simplemanager.org) in a docker container.
 
 ## Requirements
 
-* Only `docker` & `docker-compose` :blush:
+* Only (`git`), `docker` and `docker-compose` :blush:
 
-## Quick installation
+Note: make sure you have [at least docker-compose 3 or more](https://docs.docker.com/compose/install/).
+
+## Installation
+
+Container build + install:
 
 ```bash
 git clone --depth 1 https://github.com/simplemanager/simplemanager-docker
-cd simplemanager-docker/src && docker-compose up -d
-docker-compose exec simplemanager sma-install
+cd simplemanager-docker/src
+sudo docker build -t "simplemanager" .
+sudo docker-compose up -d
+sudo docker-compose exec simplemanager sma-install
 ```
+
+Installation from pre-assembled simplemanager container will be available soon.
 
 ## Advanced installation
 
-* Edit the `src/.env` file to change the sgbd password.
+* Edit the `src/.env` file to change:
+ * the sgbd password,
+ * the email of your main SimpleManager administrator,
+ * the host on which simplemanager will be hosted.
 * Build the container and run `sma-install` (quick install).
 * Update the administrator password in SimpleManager webapp.
 * Update the webapp configuration int the `etc` volume.
@@ -30,7 +41,7 @@ Use the `sma` command to manage technical features of your webapp:
 ```bash
 $ docker-compose exec simplemanager sma
 
-  Synopsis: sma <command> [options]
+  Usage: sma <command> [options]
 
       test: Application unit tests
      clean: Clean cache
