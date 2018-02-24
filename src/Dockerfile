@@ -5,7 +5,7 @@ MAINTAINER Guillaume Ponçon <guillaume.poncon@openstates.com>
 ENV LC_ALL=fr_FR.UTF-8 \
     LANG=fr_FR.UTF-8 \
     LANGUAGE=fr_FR.UTF-8 \
-    SMA_BRANCH=0.1 \
+    SMA_BRANCH=master \
     SMA_URL=https://github.com/simplemanager/simplemanager
 
 RUN apk update \
@@ -35,7 +35,7 @@ USER www-data
 
 WORKDIR /opt
 
-RUN git clone -b ${SMA_BRANCH} --depth 1  ${SMA_URL}
+RUN git clone -b ${SMA_BRANCH} --depth 1 ${SMA_URL}
 
 WORKDIR /opt/simplemanager
 
