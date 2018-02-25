@@ -11,7 +11,8 @@ ENV LC_ALL=fr_FR.UTF-8 \
 RUN apk update \
     && apk upgrade \
     && apk add --no-cache --virtual .persistent-deps inkscape mysql-client bash \
-    && apk add --no-cache --virtual .libs-deps gettext-dev freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev icu-dev yaml-dev zlib-dev gmp-dev imagemagick-dev \
+    && apk add --no-cache --virtual .libs-deps gettext-libs freetype libpng libjpeg-turbo libxml2 icu-libs yaml zlib gmp imagemagick-libs \
+    && apk add --no-cache --virtual .libs-deps-dev gettext-dev freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev icu-dev yaml-dev zlib-dev gmp-dev imagemagick-dev \
     && apk add --update --virtual .build-deps autoconf g++ libtool make curl nodejs-npm git \
     && docker-php-ext-configure gd \
         --with-gd \
@@ -60,8 +61,12 @@ RUN ln -s /opt/simplemanager/bin/sma /usr/bin/sma \
     && ln -s /opt/simplemanager/bin/clean.sh /usr/bin/sma-clean \
     && chmod 755 /usr/bin/sma-install \
     && crontab /etc/crontabs/simplemanager \
-    && apk del --purge -r .build-deps \
-    && rm -rf /tmp/* /var/cache/apk/*
+    && apk del --purge -r .build-deps .libs-deps-dev \
+    && rm -rf /tmp/* /var/cache/apk/* \
+              /home/www-data/.npm \
+              /home/www-data/.composer \
+              /opt/simplemanager/frontend \
+              /opt/simplemanager/vendor/osflab/osf/src/Pdf/fonts/*
 
 EXPOSE 9000
 
