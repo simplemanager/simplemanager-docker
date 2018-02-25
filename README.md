@@ -12,6 +12,15 @@ Note: make sure you have [at least docker-compose 3 or more](https://docs.docker
 
 ## Installation
 
+Quick install:
+
+```bash
+git clone --depth 1 https://github.com/simplemanager/simplemanager-docker
+cd simplemanager-docker
+sudo docker-compose up -d
+sudo docker-compose exec simplemanager sma-install
+```
+
 Container build + install:
 
 ```bash
@@ -21,8 +30,6 @@ sudo docker build -t "simplemanager" .
 sudo docker-compose up -d
 sudo docker-compose exec simplemanager sma-install
 ```
-
-Installation from pre-assembled simplemanager container will be available soon.
 
 ## Advanced installation
 
