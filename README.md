@@ -6,9 +6,9 @@ The [SimpleManager webapp](https://www.simplemanager.org) in a docker container.
 
 ## Requirements
 
-* Only (`git`), `docker` and `docker-compose` :blush:
+* `git`, `docker` and `docker-compose` :blush:
 
-Note: make sure you have [at least docker-compose 3 or more](https://docs.docker.com/compose/install/).
+Note: a recent release of [docker-compose](https://docs.docker.com/compose/install/) is required.
 
 ## Installation
 
