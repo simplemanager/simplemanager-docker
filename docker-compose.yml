@@ -13,8 +13,6 @@ services:
       - MYSQL_ROOT_PASSWORD
     volumes:
       - sources:/opt
-      - var:/opt/simplemanager/var
-      - etc:/opt/simplemanager/etc
     tmpfs:
       - /tmp
       - /var/log
@@ -44,8 +42,6 @@ services:
       - simplemanager
 
 volumes:
-  var:
-  etc:
   db:
   sources:
 
