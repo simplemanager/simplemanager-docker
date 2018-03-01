@@ -8,8 +8,6 @@ The [SimpleManager webapp](https://www.simplemanager.org) in a docker container.
 
 * `git`, `docker` and `docker-compose` :blush:
 
-Note: a recent release of [docker-compose](https://docs.docker.com/compose/install/) is required.
-
 ## Installation
 
 Quick install:
