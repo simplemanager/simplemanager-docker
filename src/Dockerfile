@@ -36,7 +36,9 @@ USER www-data
 
 WORKDIR /opt
 
-RUN git clone -b ${SMA_BRANCH} --depth 1 ${SMA_URL}
+RUN git clone -b ${SMA_BRANCH} --depth 1 ${SMA_URL} simplemanager \
+    && cd simplemanager \
+    && git pull
 
 WORKDIR /opt/simplemanager
 
