@@ -2,4 +2,3 @@
 0 0 * * *	/usr/bin/sma clean smacache > /dev/null
 0 2 * * *	/usr/bin/sma backup all > /dev/null
 0 4 * * *	/usr/bin/sma clean backups > /dev/null
-

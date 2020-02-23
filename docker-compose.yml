@@ -2,7 +2,7 @@ version: '2'
 
 services:
   simplemanager:
-    image: simplemanager/simplemanager
+    image: 'simplemanager/simplemanager:0.3'
     ports:
       - 9000
     links:
@@ -44,4 +44,3 @@ services:
 volumes:
   db:
   sources:
-
