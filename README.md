@@ -2,35 +2,40 @@
 
 The [SimpleManager webapp](https://www.simplemanager.org) in a docker container.
 
+- [Video: introduction](https://www.youtube.com/watch?v=Mnawp73GuL8) (fr)
+- [Video: installation](https://www.youtube.com/watch?v=koRJPe6UVq0) (fr)
+- [Video: additional configuration](https://www.youtube.com/watch?v=3FiXlhZEx8s) (fr)
+
 ## Requirements
 
-* `git`, `docker` and `docker-compose` :blush:
+* Install `git`, `docker` and `docker-compose`:
 
 ```bash
 # Debian / Ubuntu
 sudo apt install git docker docker-compose
 ```
 
+* Port `localhost:8080` need to be free.
+
 ## Quick install
 
-Get the docker sources:
+Get sources and run SimpleManager:
 
 ```bash
 git clone --depth 1 https://github.com/simplemanager/simplemanager-docker
 cd simplemanager-docker
-```
-
-Start the containers:
-
-```bash
 sudo docker-compose up -d
 ```
 
-Run the installation of SimpleManager:
+Run the installation script:
 
 ```bash
 sudo docker-compose exec simplemanager sma-install
 ```
+
+Use SimpleManager:
+
+- Just go to http://localhost:8080
 
 ## Advanced install
 
@@ -81,7 +86,3 @@ To explore the simplemanager container you can run:
 ```bash
 sudo docker-compose exec simplemanager bash
 ```
-
-## Screenshoot
-
-![SimpleManager interface](https://blog.simplemanager.org/wp-content/uploads/2017/11/sma-factures.png)

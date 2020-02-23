@@ -12,7 +12,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache --virtual .persistent-deps inkscape mysql-client bash \
     && apk add --no-cache --virtual .libs-deps gettext-libs freetype libpng libjpeg-turbo libxml2 icu-libs yaml zlib gmp imagemagick-libs \
-    && apk add --no-cache --virtual .libs-deps-dev gettext-dev freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev icu-dev yaml-dev zlib-dev gmp-dev imagemagick-dev \
+    && apk add --no-cache --virtual .libs-deps-dev gettext-dev freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev icu-dev yaml-dev zlib-dev gmp-dev imagemagick-dev python \
     && apk add --update --virtual .build-deps autoconf g++ libtool make curl nodejs-npm git \
     && docker-php-ext-configure gd \
         --with-gd \
@@ -23,9 +23,9 @@ RUN apk update \
     && pecl install imagick yaml redis \
     && docker-php-ext-enable imagick yaml redis \
     && apk add --no-cache --virtual .imagick-runtime-deps imagemagick \
-    && apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv \
+    && apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community gnu-libiconv \
     && curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
-    && mkdir -m 0750 -p /opt \
+    && mkdir -p /opt \
     && chown www-data:www-data /opt
 
 COPY files/php.ini /usr/local/etc/php/
@@ -49,7 +49,7 @@ COPY files/application.php etc/application.php
 
 WORKDIR /opt/simplemanager/frontend/admin
 
-RUN npm install && sh ./build.sh 
+RUN npm i -f && sh ./build.sh
 
 USER root
 
@@ -64,6 +64,7 @@ RUN ln -s /opt/simplemanager/bin/sma /usr/bin/sma \
     && chmod 755 /usr/bin/sma-install \
     && crontab /etc/crontabs/simplemanager \
     && apk del --purge -r .build-deps .libs-deps-dev \
+    && chmod 755 /opt \
     && rm -rf /tmp/* /var/cache/apk/* \
               /home/www-data/.npm \
               /home/www-data/.composer \
@@ -73,4 +74,3 @@ RUN ln -s /opt/simplemanager/bin/sma /usr/bin/sma \
 EXPOSE 9000
 
 CMD ["php-fpm"]
-

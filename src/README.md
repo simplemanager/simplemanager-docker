@@ -1,6 +1,7 @@
 # SimpleManager Dockerfile
 
-This container is available in [docker hub](https://hub.docker.com/r/simplemanager/simplemanager/). You can check the Dockerfile if you want a documentation to install SimpleManager without docker.
+This container is available in [docker hub](https://hub.docker.com/r/simplemanager/simplemanager/). 
+You can check the Dockerfile if you want a documentation to install SimpleManager without docker.
 
 ## Build the container
 
