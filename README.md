@@ -1,6 +1,6 @@
 # SimpleManager docker container
 
-The [SimpleManager webapp](https://www.simplemanager.org) in a docker container.
+The [SimpleManager webapp](https://sma.openstates.com) in a docker container.
 
 - [Video: introduction](https://www.youtube.com/watch?v=Mnawp73GuL8) (fr)
 - [Video: installation](https://www.youtube.com/watch?v=koRJPe6UVq0) (fr)
@@ -86,3 +86,4 @@ To explore the simplemanager container you can run:
 ```bash
 sudo docker-compose exec simplemanager bash
 ```
+
